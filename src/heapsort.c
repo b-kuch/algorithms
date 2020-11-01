@@ -1,5 +1,31 @@
 #include "heapsort_rec.h"
 
+
+void heapify_iterative(int heap_size, int* heap, int parent)
+{
+    int left, right;
+    int larger = parent;
+    while(true)
+    {
+        left    = 2*parent+1;
+        right   = 2*parent+2;
+        if (left < heap_size && heap[left] < heap[larger])
+        {
+            larger = left;
+        }
+        if (right < heap_size && heap[right] < heap[larger])
+        {
+            larger = right;
+        }
+        if (larger == parent)
+        {
+            break;
+        }
+        swap(&heap[parent], &heap[larger]);
+        parent=larger;
+    }
+}
+
 void heapify_recursive(int heap_size, int* heap, int parent)
 {
     int left, right, larger;
@@ -21,20 +47,30 @@ void heapify_recursive(int heap_size, int* heap, int parent)
     }
 }
 
-void build_heap_recursive(int heap_size, int* heap)
+void build_heap(int heap_size, int* heap, void (*heapify)(int, int*, int))
 {
     for(int i=heap_size/2-1;i>=0;i--)
     {
-        heapify_recursive(heap_size, heap, i);
+        (*heapify)(heap_size, heap, i);
     }
+}
+
+void heap_sort(int heap_size, int* heap, void (*heapify)(int, int*, int))
+{
+    build_heap(heap_size, heap, heapify);
+    for(int i=heap_size-1;i>=0;i--)
+    {
+        swap(&heap[0], &heap[i]);
+        (*heapify)(i, heap, 0);
+    }
+}
+
+void heap_sort_iterative(int heap_size, int* heap)
+{
+    heap_sort(heap_size, heap, heapify_iterative);
 }
 
 void heap_sort_recursive(int heap_size, int* heap)
 {
-    build_heap_recursive(heap_size, heap);
-    for(int i=heap_size-1;i>=0;i--)
-    {
-        swap(&heap[0], &heap[i]);
-        heapify_recursive(i, heap, 0);
-    }
+    heap_sort(heap_size, heap, heapify_recursive);
 }
