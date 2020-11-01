@@ -7,14 +7,15 @@
     #include <math.h>
     #include <stdbool.h>
     
-    void create_heap(int heap_size, int** heap);
-    void create_heap_x(int heap_size, int** heap, int x);
+    void create_array(int array_size, int** array);
+    void create_array_x(int array_size, int** array, int x);
 
     void spaces(int amount);
 
     #define MAX_PRINTABLE_HEAP 64
     void print_heap(int heap_size, int* heap);
     void print_list(int size, int* list);
+    void print_complexity(int n, double time, double(*function_pointer)(int));  // TODO: add memory size in bytes
 
     bool greater(int a, int b);
     bool smaller(int a, int b);
