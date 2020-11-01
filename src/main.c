@@ -3,11 +3,10 @@
 #include <math.h>
 
 #include "file_io.h"
-#include "heapsort_rec.h"
-#include "heapsort_iter.h"
 #include "util.h"
 #include "time_complexity.h"
 
+#include "heapsort.h"
 double Fn(int n)
 {
     return n*log2(n);
@@ -24,7 +23,7 @@ int main()
     {
         save_random_list(n, fname);
         load_number_file_to_array(&arr,fname);
-        Tn = my_timeit(&heap_sort_iter, n, arr);
+        Tn = my_timeit(&heap_sort_recursive, n, arr);
         sorted = is_sorted(n, arr, &smaller);
         free(arr);
         print_complexity(n, Tn, &Fn);
