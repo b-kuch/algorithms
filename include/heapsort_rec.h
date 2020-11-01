@@ -1,5 +1,5 @@
-#ifndef HS_FUNTIONS
-#define HS_FUNTIONS
+#ifndef HEAPSORT_RECURSIVE_FUNTIONS
+#define HEAPSORT_RECURSIVE_FUNTIONS
 
     #include "util.h"
 
