@@ -1,5 +1,5 @@
-#ifndef HSIT_FUNTIONS
-#define HSIT_FUNTIONS
+#ifndef HEAPSORT_ITER_FUNTIONS
+#define HEAPSORT_ITER_FUNTIONS
 
     #include <stdbool.h>
 
