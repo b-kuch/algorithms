@@ -1,26 +1,26 @@
 SDIR =src
 ODIR =obj
-LDIR =lib
 IDIR =include
 
 CC=gcc
-CFLAGS=-I $(IDIR)
+CFLAGS=-I $(IDIR) -Wall -g
 
 LIBS=-lm
 
-
-DEPS = $(wildcard $(IDIR)/*.h)
-OBJ = $(wildcard $(ODIR)/*.o)
 SRC = $(wildcard $(SDIR)/*.c)
+DEPS = $(wildcard $(IDIR)/*.h)
+OBJ = $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
-$(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+# $(info $$OBJ is [${OBJ}])
 
 main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
+$(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
 
 .PHONY: clean
-
 clean:
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+	rm -f $(ODIR)/*.o 
+	rm main
