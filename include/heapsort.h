@@ -1,5 +1,5 @@
-#ifndef HEAPSORT
-#define HEAPSORT
+#ifndef HEAPSORT_FUNCTIONS
+#define HEAPSORT_FUNCTIONS
 
     #include <stdbool.h>
 
