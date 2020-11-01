@@ -6,7 +6,6 @@ bool file_exists(char* fname)
     if (f == NULL)
     {
         fclose(f);
-        printf("Nie znaleziono pliku %s\n", fname);
         return false;
     }
     else
