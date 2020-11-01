@@ -75,6 +75,10 @@ bool smaller(int a, int b)
 {
     return a<b;
 }
+bool smaller_equal(int a, int b)
+{
+    return a<=b;
+}
 
 bool is_sorted(int size, int* list, bool (*compare_function)(int, int ))
 {
@@ -102,4 +106,10 @@ void swap(int* a, int* b)
 int heap_levels(int n)
 {
     return ceil(log2(n));
+}
+
+
+int rightmost(int p, int r)
+{
+    return r;
 }
