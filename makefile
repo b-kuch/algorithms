@@ -24,6 +24,7 @@ $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 clean:
 	rm -f $(ODIR)/*.o 
 	rm main.out
+	rm valgrind-out.txt
 
 valgrind: main.out
 	valgrind \
