@@ -18,11 +18,11 @@
     void print_complexity(int n, double time, double(*function_pointer)(int));  // TODO: add memory size in bytes
 
     bool greater(int a, int b);
+    bool greater_equal(int a, int b);
     bool smaller(int a, int b);
     bool smaller_equal(int a, int b);
     bool is_sorted(int size, int* list, bool (*compare_function)(int, int ));
     void swap(int* a, int* b);
     int heap_levels(int n);
 
-    int rightmost(int p, int r);
 #endif

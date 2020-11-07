@@ -70,7 +70,10 @@ bool greater(int a, int b)
 {
     return a>b;
 }
-
+bool greater_equal(int a, int b)
+{
+    return a>=b;
+}
 bool smaller(int a, int b)
 {
     return a<b;
@@ -88,7 +91,7 @@ bool is_sorted(int size, int* list, bool (*compare_function)(int, int ))
     }
     for(int* i=list+1;i<list+size;i++)
     {
-        if((*compare_function)(*(i-1),*i))
+        if(!(*compare_function)(*(i-1),*i))
         {
             return false;
         }
@@ -109,7 +112,3 @@ int heap_levels(int n)
 }
 
 
-int rightmost(int p, int r)
-{
-    return r;
-}
