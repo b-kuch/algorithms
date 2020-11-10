@@ -1,28 +1,16 @@
 #include "bubblesort.h"
 
-void bubblesort(int n, int* array, bool (*compare_f)(int, int))
+void bubblesort(int size, int* array, bool (*compare_f)(int, int))
 {
-    while (n>1)
+    while (size>1)
     {
-        for (int i=0; i<n-1; i++)
+        for (int i=0; i<size-1; i++)
         {
-            if ((*compare_f)(array[i],array[i+1]))
+            if (!(*compare_f)(array[i],array[i+1]))  // NOT TRUE aby użyć tego samego porównania co w QS i sprawdzaniu
             {
                 swap(&array[i],&array[i+1]);
             }
         }
-        n--;
+        size--;
     }
 }
-
-//  procedure bubbleSort( A : lista elementów do posortowania )
-//    n = liczba_elementów(A)
-//     do
-//      for (i = 0; i < n-1; i++) do:
-//        if A[i] > A[i+1] then
-//          swap(A[i], A[i+1])
-//        end if
-//      end for
-//      n = n-1
-//    while n > 1
-//  end procedure

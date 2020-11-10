@@ -5,6 +5,6 @@
 
     #include "util.h"
     
-    void bubblesort(int n, int* array, bool (*compare_f)(int, int));
+    void bubblesort(int size, int* array, bool (*compare_f)(int, int));
 
 #endif
