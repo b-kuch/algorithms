@@ -1,30 +1,31 @@
+.DELETE_ON_ERROR:
+# main files
 SDIR =src
 ODIR =obj
 IDIR =include
+
+SRC = $(wildcard $(SDIR)/*.c)
+DEPS = $(wildcard $(IDIR)/*.h)
+OBJ = $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
 CC=gcc
 CFLAGS=-I$(IDIR) -Wall -g -Og
 
 LIBS=-lm
 
-SRC = $(wildcard $(SDIR)/*.c)
-DEPS = $(wildcard $(IDIR)/*.h)
-OBJ = $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
-
 # $(info $$OBJ is [${OBJ}])
 
 main.out: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+	$(CC) -o $@ obj/*.o $(CFLAGS) $(LIBS)
+	#$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
-
 
 .PHONY: clean
 clean:
 	rm -f $(ODIR)/*.o 
 	rm main.out
-
 
 valgrind: main.out
 	valgrind \
