@@ -25,7 +25,7 @@ int median_partition(
     int *array,
     bool (*compare_f)(int, int));
 
-void my_quicksort(
+void quicksort(
     int p,
     int r,
     int *array,

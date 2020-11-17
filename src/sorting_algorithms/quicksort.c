@@ -61,7 +61,7 @@ int median_partition(
     return rightmost_partition(p, r, array, compare_f);
 }
 
-void my_quicksort(
+void quicksort(
     int p,
     int r,
     int *array,
@@ -71,7 +71,7 @@ void my_quicksort(
     if (r > p)
     {
         int pivot = (*partition_method)(p, r, array, compare_f);
-        my_quicksort(p, pivot, array, compare_f, partition_method);
-        my_quicksort(pivot + 1, r, array, compare_f, partition_method);
+        quicksort(p, pivot, array, compare_f, partition_method);
+        quicksort(pivot + 1, r, array, compare_f, partition_method);
     }
 }
