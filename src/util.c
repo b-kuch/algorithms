@@ -27,31 +27,9 @@ void spaces(int amount)
         printf(" ");
 }
 
-void print_heap(int heap_size, int* heap)
+void print_array(int size, int* array)
 {
-    if(heap_size>=MAX_PRINTABLE_HEAP)
-    {
-        printf("n too big for console.\n");
-        return;
-    }
-    int levels=heap_levels(heap_size);
-    for(int i=1; i<heap_size+1 ;i*=2)
-    {
-        spaces(pow(2, levels-1)-1);
-
-        for(int j=0; j<i&&i-1+j<heap_size;j++)
-        {
-            printf("%d", heap[i-1+j]);
-            spaces(pow(2, levels)-1);
-        }
-        levels--;
-        printf("\n");
-    }
-}
-
-void print_list(int size, int* list)
-{
-    for(int* i=list;i<list+size;i++)
+    for(int* i=array;i<array+size;i++)
     {
         printf("%d ",*i);
     }
@@ -66,30 +44,31 @@ void print_complexity(int n, double time, double(*function_pointer)(int))
 }
 
 
-bool greater(int a, int b)
+inline bool greater(int a, int b)
 {
     return a>b;
 }
-bool greater_equal(int a, int b)
+inline bool greater_equal(int a, int b)
 {
     return a>=b;
 }
-bool smaller(int a, int b)
+inline bool smaller(int a, int b)
 {
     return a<b;
 }
-bool smaller_equal(int a, int b)
+inline bool smaller_equal(int a, int b)
 {
     return a<=b;
 }
 
-bool is_sorted(int size, int* list, bool (*compare_function)(int, int ))
+
+bool is_sorted(int size, int* array, bool (*compare_function)(int, int ))
 {
     if(size<2)
     {
         return true;
     }
-    for(int* i=list+1;i<list+size;i++)
+    for(int* i=array+1;i<array+size;i++)
     {
         if(!(*compare_function)(*(i-1),*i))
         {
@@ -99,16 +78,15 @@ bool is_sorted(int size, int* list, bool (*compare_function)(int, int ))
     return true;
 }
 
-void swap(int* a, int* b)
+inline void swap(int* a, int* b)
 {
     int c = *a;
     *a = *b;
     *b = c;
 }
 
-int heap_levels(int n)
+// if a<=x<=b
+inline bool in_range(int x, int a, int b)
 {
-    return ceil(log2(n));
+    return x>=a && x<=b;
 }
-
-
