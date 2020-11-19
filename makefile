@@ -4,8 +4,8 @@ SDIR =src
 ODIR =obj
 IDIR =include
 
-SRC = $(wildcard $(SDIR)/*.c)
-DEPS = $(wildcard $(IDIR)/*.h)
+SRC = $(wildcard $(SDIR)/*.c) $(wildcard $(SDIR)/sorting_algorithms/*.c) 
+DEPS = $(wildcard $(IDIR)/*.h) $(wildcard $(IDIR)/sorting_algorithms/*.h) 
 OBJ = $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
 CC=gcc
@@ -16,7 +16,7 @@ LIBS=-lm
 # $(info $$OBJ is [${OBJ}])
 
 main.out: $(OBJ)
-	$(CC) -o $@ obj/*.o $(CFLAGS) $(LIBS)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 #$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
