@@ -9,7 +9,7 @@ DEPS = $(wildcard $(IDIR)/*.h)
 OBJ = $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
 CC=gcc
-CFLAGS=-I$(IDIR) -Wall -g -Og
+CFLAGS=-I$(IDIR) -Wall -ggdb -Og
 
 LIBS=-lm
 
@@ -17,7 +17,8 @@ LIBS=-lm
 
 main.out: $(OBJ)
 	$(CC) -o $@ obj/*.o $(CFLAGS) $(LIBS)
-	#$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+#$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
