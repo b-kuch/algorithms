@@ -14,6 +14,22 @@ bool file_exists(char *fname)
         return true;
     }
 }
+
+int number_of_lines(char *fname)
+{
+    int lines_count = 0;
+    FILE *f = fopen(fname, "r");
+
+    for (char c = getc(f); c != EOF; c = getc(f))
+    {
+        if (c == '\n')
+        {
+            lines_count++;
+        }
+    }
+    fclose(f);
+    return lines_count;
+}
 int save_random_list(int n, char *fname)
 {
     srand(time(NULL));
