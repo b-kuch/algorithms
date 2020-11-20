@@ -1,5 +1,5 @@
-#ifndef UTIL_FUNCTIONS
-#define UTIL_FUNCTIONS
+#ifndef UTIL
+#define UTIL
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,14 +14,20 @@ void spaces(int amount);
 void print_array(int size, int *array);
 void print_complexity(int n, double time, double (*function_pointer)(int));
 
-inline bool greater(int a, int b);
-inline bool greater_equal(int a, int b);
-inline bool smaller(int a, int b);
-inline bool smaller_equal(int a, int b);
+inline bool greater(int a, int b) { return a > b; }
+inline bool greater_equal(int a, int b) { return a >= b; }
+inline bool smaller(int a, int b) { return a < b; }
+inline bool smaller_equal(int a, int b) { return a <= b; }
 
 bool is_sorted(int size, int *array, bool (*compare_function)(int, int));
-inline void swap(int *a, int *b);
-inline bool in_range(int x, int a, int b);
+inline void swap(int *a, int *b)
+{
+    int c = *a;
+    *a = *b;
+    *b = c;
+}
+// if a<=x<=b
+inline bool in_range(int x, int a, int b) { return x >= a && x <= b; }
 
 #define ASCII_DIGITS 48, 57
 #define ASCII_UPPERCASE 65, 90
