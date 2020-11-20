@@ -1,4 +1,4 @@
-#include "heapsort.h"
+#include "sorting_algorithms/heapsort.h"
 
 void heapify_iterative(int heap_size, int *heap, int parent)
 {

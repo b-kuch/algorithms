@@ -1,4 +1,4 @@
-#include "insertsort.h"
+#include "sorting_algorithms/insertsort.h"
 
 void insertsort(int size, int* array, bool(*compare_f)(int, int))
 {

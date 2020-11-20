@@ -1,4 +1,4 @@
-#include "bubblesort.h"
+#include "sorting_algorithms/bubblesort.h"
 
 void bubblesort(int size, int* array, bool (*compare_f)(int, int))
 {
